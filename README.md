@@ -19,9 +19,12 @@ curl -kLs wget https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh
 
 -if the command doesn't work, try the command:
 
-cd /tmp; wget -q https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh ; 
+cd /tmp; wget -q https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh ;
+
 chmod 755 ./iNB.sh;
-sh ./iNB.sh; 
+
+sh ./iNB.sh;
+
 rm ./iNB.sh; cd
 
 #
@@ -30,10 +33,12 @@ rm ./iNB.sh; cd
 
 -if the command doesn't work, try the command:
 
-cd /tmp; fullwget --no-check-certificate https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh ; 
-chmod 755 ./iNB.sh; 
-sh ./iNB.sh; 
-rm ./iNB.sh; cd
+cd /tmp; fullwget --no-check-certificate https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh ;
 
+chmod 755 ./iNB.sh;
+
+sh ./iNB.sh;
+
+rm ./iNB.sh; cd
 
 #
