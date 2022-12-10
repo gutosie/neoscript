@@ -53,21 +53,22 @@ def getCPU():
         elif getCPUtype() == "ARMv7":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetarm /usr/bin/fullwget')
         elif getCPUtype() == "SH4":
-                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')                
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
+	os.system('chmod 755 /usr/bin/fullwget')
     else:
         pass
         
 class ScriptNeo(Screen):
     if isFHD():
 	skin = """
-	<screen position="center,center" size="1000,750" title="Updatel satellite list" >
+	<screen position="center,center" size="1000,750" title="Updatel list" >
             <widget name="list" render="Listbox" itemHeight="50" font="Regular;40" position="25,80" zPosition="1" size="950,650" scrollbarMode="showOnDemand" transparent="1">
             <convert type="StringList" font="Regular;70" />
           </widget>
 	</screen>"""
     else:
 	skin = """
-	<screen position="center,center" size="700,340" title="Script Executer" >
+	<screen position="center,center" size="700,340" title="NeoScript" >
 		<widget name="list" position="center,center" size="680,320" zPosition="1" font="Regular;24" transparent="1" 
 scrollbarMode="showOnDemand" />
 	</screen>"""
