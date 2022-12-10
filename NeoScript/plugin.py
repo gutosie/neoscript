@@ -10,8 +10,9 @@ from Plugins.Plugin import PluginDescriptor
 from Screens.Console import Console
 from Screens.Screen import Screen
 import os
+import sys
 from os import system
-from Tools.Directories import fileExists
+from Tools.Directories import fileExists, SCOPE_PLUGINS
 
 ############################################
 
@@ -31,6 +32,17 @@ def isUHD():
     desktopSize = getDS()
     return desktopSize[0] >= 1920 and desktopSize[0] < 3840
 
+def getCPU():
+    if not fileExists('/usr/bin/fullwget'):
+        if getCPUtype() == "ARMv7":
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetarm /usr/bin/fullwget')
+        elif getCPUtype() == "MIPS":
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetmips /usr/bin/fullwget')                
+        elif getCPUtype() == "SH4":
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
+	os.system('chmod 755 /usr/bin/fullwget')
+    else:
+        pass
 
 def getCPUtype():
     cpu = 'UNKNOWN'
@@ -39,24 +51,12 @@ def getCPUtype():
             lines = f.read()
             f.close()
         if lines.find('ARMv7') != -1:
-            cpu = 'ARMv7'
+            cpu = "ARMv7"
         elif lines.find('mips') != -1:
-            cpu = 'MIPS'
+            cpu = "MIPS"
         elif lines.find('sh4') != -1:
-            cpu = 'SH4'            
+            cpu = "SH4"            
     return cpu
-
-def getCPU():
-    if not fileExists('/usr/bin/fullwget'):
-        if getCPUtype() == 'MIPS':
-                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetmips /usr/bin/fullwget')
-        elif getCPUtype() == "ARMv7":
-                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetarm /usr/bin/fullwget')
-        elif getCPUtype() == "SH4":
-                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
-	os.system('chmod 755 /usr/bin/fullwget')
-    else:
-        pass
         
 class ScriptNeo(Screen):
     if isFHD():
