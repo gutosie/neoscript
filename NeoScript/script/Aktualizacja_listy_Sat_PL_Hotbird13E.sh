@@ -35,6 +35,7 @@ fi
 
 if [ ! -f /tmp/e2ListaHB.tar.gz ] ; then
     if [ -f /usr/bin/fullwget ] ; then
+        chmod 755 /usr/bin/fullwget
         echo "Instalacja nowej listy kanałów w toku..."
         echo "________________________________"
         fullwget --no-check-certificate wget -q $LinkNeoList > /dev/null 2>&1
