@@ -6,13 +6,15 @@
 #Instalacja neoscript. Uruchom poniższą komendę w terminalu tunera
 
 #
+
 opkg update
 
 opkg install curl
 
 curl -kLs wget https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh|sh
 
-###########################################################
+#
+
 -jeśli w/w polecenie nie zadział próbujemy polecenia:
 
 -if the command doesn't work, try the command:
@@ -22,7 +24,8 @@ chmod 755 ./iNB.sh;
 sh ./iNB.sh; 
 rm ./iNB.sh; cd
 
-############################################################
+#
+
 -jeśli w/w polecenie nie zadział próbujemy następne polecenia:
 
 -if the command doesn't work, try the command:
@@ -31,3 +34,6 @@ cd /tmp; fullwget --no-check-certificate https://raw.githubusercontent.com/gutos
 chmod 755 ./iNB.sh; 
 sh ./iNB.sh; 
 rm ./iNB.sh; cd
+
+
+#
