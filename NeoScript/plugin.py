@@ -43,7 +43,7 @@ def getCPUtype():
         elif lines.find('mips') != -1:
             cpu = "MIPS"
         elif lines.find('sh4') != -1:
-            cpu = "SH4"            
+            cpu = "sh4"            
         if os.path.exists('/proc/stb/info/model'):
             with open('/proc/stb/info/model', 'r') as f:
                 lines = f.read()
@@ -60,8 +60,10 @@ def getCPU():
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetarm /usr/bin/fullwget')
         elif getCPUtype() == "MIPS":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetmips /usr/bin/fullwget')                
-        elif getCPUtype() == "SH4":
+        elif getCPUtype() == "sh4":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
+        else:
+            pass		
     else:
         os.system('chmod 755 /usr/bin/fullwget')
         
