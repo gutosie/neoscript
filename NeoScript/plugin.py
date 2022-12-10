@@ -49,11 +49,11 @@ def getCPUtype():
 def getCPU():
     if not fileExists('/usr/bin/fullwget'):
         if getCPUtype() == 'MIPS':
-                os.system('/bin/tar -xzvf /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/mips_fullwget.tar.gz -C /')
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetmips /usr/bin/fullwget')
         elif getCPUtype() == "ARMv7":
-                pass #os.system('/bin/tar -xzvf /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/arm_fullwget.tar.gz -C / ')
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetarm /usr/bin/fullwget')
         elif getCPUtype() == "SH4":
-                pass #os.system('/bin/tar -xzvf /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/sh4_fullwget.tar.gz -C / ')                
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')                
     else:
         pass
         
