@@ -9,4 +9,4 @@ opkg update
 
 opkg install curl
 
-curl -kLs https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh|sh
+curl -kLs wget https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh|sh
