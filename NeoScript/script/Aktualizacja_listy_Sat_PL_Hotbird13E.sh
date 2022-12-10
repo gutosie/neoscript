@@ -47,7 +47,7 @@ fi
 sleep 2
 
 if [ -f /tmp/e2ListaHB.tar.gz ] ; then
-    [ $PL ] && echo "Listy kanałów pobrana prawidłowo" || echo "Channel lists downloaded";
+    [ $PL ] && echo "Lista kanałów pobrana prawidłowo" || echo "Channel lists downloaded";
     [ $PL ] && echo "Usuwanie starej listy kanałów..." || echo "Deleting an old list...";
     echo "________________________________";
     sleep 2
