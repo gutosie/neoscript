@@ -2,7 +2,6 @@
 #
 #skrypt instaluje neoscript
 #
-BOXHOSTNAME=$( cat /etc/hostname)
 if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
   PL=1
 fi
