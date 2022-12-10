@@ -119,13 +119,18 @@ def startSetup(menuid):
     if menuid != 'mainmenu':
         return []
     else:
-        return [(_('Aktualizacja listy'),
+        return [(_('Aktualizacja listy tv'),
           main,
           'tvlist',
           None)]
 
+from Plugins.Plugin import PluginDescriptor
 
 def Plugins(**kwargs):
-    return [PluginDescriptor(name='Satellite list PL', description=_('HB list PL'), where=PluginDescriptor.WHERE_MENU, fnc=startSetup)]
- 
- 
+    if isFHD():
+        list = [PluginDescriptor(name='ListTv', description='TvList', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='ListTv', description=_('Installing List'), icon='listtv_fhd.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
+        list.append(PluginDescriptor(name=_('ListTvHB'), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main))
+    else:
+        list = [PluginDescriptor(name='ListTv', description='TvList', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='ListTv', description=_('Installing List'), icon='listtv_hd.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
+        list.append(PluginDescriptor(name=_('ListTvHB'), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main))
+    return list
