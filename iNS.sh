@@ -12,7 +12,7 @@ elif [ -f /etc/opkg/opkg.conf ] ; then
    STATUS='/var/lib/opkg/status'
    OS='Opensource'
 fi
-
+#
     [ -e /tmp/neoscript.zip ] && rm -f /tmp/neoscript.zip
     [ -e /tmp/neoscript-main ] && rm -rf /tmp/neoscript-main
     echo ""
