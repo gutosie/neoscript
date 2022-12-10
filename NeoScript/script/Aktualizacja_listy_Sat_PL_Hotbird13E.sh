@@ -83,6 +83,6 @@ else
    echo "Nie moĹĽna pobraÄ‡ aktualizacji, sprĂłbuj pĂłĹşniej..."
    echo `date`
 fi
-cd /
+cd
 
 exit 0
