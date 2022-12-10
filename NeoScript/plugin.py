@@ -44,18 +44,26 @@ def getCPUtype():
             cpu = "MIPS"
         elif lines.find('sh4') != -1:
             cpu = "SH4"            
+        if os.path.exists('/proc/stb/info/model'):
+            with open('/proc/stb/info/model', 'r') as f:
+                lines = f.read()
+                f.close()            
+            if lines.find('nbox') != -1:
+                cpu = "nbox"
     return cpu
-
+    
 def getCPU():
     if not fileExists('/usr/bin/fullwget'):
-        if getCPUtype() == "ARMv7":
+        if getCPUtype() == "nbox":
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')    
+        elif getCPUtype() == "ARMv7":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetarm /usr/bin/fullwget')
         elif getCPUtype() == "MIPS":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetmips /usr/bin/fullwget')                
         elif getCPUtype() == "SH4":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
     else:
-	os.system('chmod 755 /usr/bin/fullwget')
+        os.system('chmod 755 /usr/bin/fullwget')
         
 class ScriptNeo(Screen):
     if isFHD():
