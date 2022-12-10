@@ -32,18 +32,6 @@ def isUHD():
     desktopSize = getDS()
     return desktopSize[0] >= 1920 and desktopSize[0] < 3840
 
-def getCPU():
-    if not fileExists('/usr/bin/fullwget'):
-        if getCPUtype() == "ARMv7":
-                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetarm /usr/bin/fullwget')
-        elif getCPUtype() == "MIPS":
-                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetmips /usr/bin/fullwget')                
-        elif getCPUtype() == "SH4":
-                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
-	os.system('chmod 755 /usr/bin/fullwget')
-    else:
-        pass
-
 def getCPUtype():
     cpu = 'UNKNOWN'
     if os.path.exists('/proc/cpuinfo'):
@@ -57,6 +45,17 @@ def getCPUtype():
         elif lines.find('sh4') != -1:
             cpu = "SH4"            
     return cpu
+
+def getCPU():
+    if not fileExists('/usr/bin/fullwget'):
+        if getCPUtype() == "ARMv7":
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetarm /usr/bin/fullwget')
+        elif getCPUtype() == "MIPS":
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetmips /usr/bin/fullwget')                
+        elif getCPUtype() == "SH4":
+                os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
+    else:
+	os.system('chmod 755 /usr/bin/fullwget')
         
 class ScriptNeo(Screen):
     if isFHD():
@@ -115,7 +114,7 @@ scrollbarMode="showOnDemand" />
 def main(session, **kwargs):
 	session.open(ScriptNeo)
 
-def startSetup(menuid):
+def startList(menuid):
     if menuid != 'mainmenu':
         return []
     else:
