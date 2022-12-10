@@ -12,7 +12,7 @@ elif [ -f /etc/opkg/opkg.conf ] ; then
    STATUS='/var/lib/opkg/status'
    OS='Opensource'
 fi
-if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions ]; then
+
     [ -e /tmp/neoscript.zip ] && rm -f /tmp/neoscript.zip
     [ -e /tmp/neoscript-main ] && rm -rf /tmp/neoscript-main
     echo ""
@@ -69,22 +69,6 @@ if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions ]; then
     else
         killall -9 enigma2
     fi
-else
-    if [ $PL ] ; then
-      echo ""
-      echo "#####################################################"
-      echo ">>>>     Błąd!    To nie jest image flash.       <<<<"
-      echo ">>>>     Instaluj neoscript tylko z Flash.       <<<<"
-      echo "#####################################################"
-      echo ""
-    else
-      echo ""
-      echo "#####################################################"
-      echo ">>>>     Error!   Go back to image flash.        <<<<"
-      echo ">>>>     To install neoscript go back to Flash.  <<<<"
-      echo "#####################################################"
-      echo ""
-    fi
-fi
+    
 exit 0 
 
