@@ -25,7 +25,9 @@ chmod 755 ./iNB.sh;
 
 sh ./iNB.sh;
 
-rm ./iNB.sh; cd
+rm ./iNB.sh; 
+
+cd
 
 #
 
@@ -39,6 +41,8 @@ chmod 755 ./iNB.sh;
 
 sh ./iNB.sh;
 
-rm ./iNB.sh; cd
+rm ./iNB.sh; 
+
+cd
 
 #
