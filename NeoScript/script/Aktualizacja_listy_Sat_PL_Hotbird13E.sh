@@ -3,74 +3,74 @@ if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
   PL=1
 fi
 
-LinkNeoList='https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/e2ListaHB.tar.gz'
+LinkNeoList='https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/e2listhb'
 cd /tmp
 
 #echo   `date +[%e-%m-%Y_%T]`;
 echo "Script by - gutosie"
 echo "*****************************************************"
-[ $PL ] && echo "Pobieranie listy kanałów z sieci..." || echo "Downloading a list from the web...";
+[ $PL ] && echo "Pobieranie listy kanaĹ‚Ăłw z sieci..." || echo "Downloading a list from the web...";
 sleep 2 
 if [ -f /usr/bin/wget ] ; then
     echo "________________________________";
     sleep 2
     #wget -q "--no-check-certificate" wget -O - -q
     wget -q $LinkNeoList > /dev/null 2>&1
-    if [ ! -f /tmp/e2ListaHB.tar.gz ] ; then
-       echo "wget nie potrafił pobrać listy kanałów"
+    if [ ! -f /tmp/e2listhb ] ; then
+       echo "wget nie potrafiĹ‚ pobraÄ‡ listy kanaĹ‚Ăłw"
        sleep 2
     fi
 fi
 
-if [ ! -f /tmp/e2ListaHB.tar.gz ] ; then
+if [ ! -f /tmp/e2listhb ] ; then
     if [ -f /usr/bin/curl ] ; then
-        echo "curl instaluje nową listę kanałów"
+        echo "curl instaluje nowÄ… listÄ™ kanaĹ‚Ăłw"
         echo "________________________________"
         curl -O --ftp-ssl -k $LinkNeoList > /dev/null 2>&1
     else
-       echo "curl nie potrafił pobrać listy kanałów - nie ma curl"
+       echo "curl nie potrafiĹ‚ pobraÄ‡ listy kanaĹ‚Ăłw - nie ma curl"
        sleep 2
     fi
 fi
 
-if [ ! -f /tmp/e2ListaHB.tar.gz ] ; then
+if [ ! -f /tmp/e2listhb ] ; then
     if [ -f /usr/bin/fullwget ] ; then
         chmod 755 /usr/bin/fullwget
-        echo "Instalacja nowej listy kanałów w toku..."
+        echo "Instalacja nowej listy kanaĹ‚Ăłw w toku..."
         echo "________________________________"
         fullwget --no-check-certificate wget -q $LinkNeoList > /dev/null 2>&1
     else
-       echo "fullwget nie potrafił pobrać listy kanałów - nie ma fullwget"
+       echo "fullwget nie potrafiĹ‚ pobraÄ‡ listy kanaĹ‚Ăłw - nie ma fullwget"
        sleep 2
     fi
 fi
 
 sleep 2
 
-if [ -f /tmp/e2ListaHB.tar.gz ] ; then
-    [ $PL ] && echo "Lista kanałów pobrana prawidłowo" || echo "Channel lists downloaded";
-    [ $PL ] && echo "Usuwanie starej listy kanałów..." || echo "Deleting an old list...";
+if [ -f /tmp/e2listhb ] ; then
+    [ $PL ] && echo "Lista kanaĹ‚Ăłw pobrana prawidĹ‚owo" || echo "Channel lists downloaded";
+    [ $PL ] && echo "Usuwanie starej listy kanaĹ‚Ăłw..." || echo "Deleting an old list...";
     echo "________________________________";
     sleep 2
     rm -fr /etc/enigma2/userbouquet*;
     rm -fr /etc/enigma2/bouquets*;
-    [ $PL ] && echo "Instalacja nowej listy kanałów w toku..." || echo "Installing new list in progress..." ;
+    [ $PL ] && echo "Instalacja nowej listy kanaĹ‚Ăłw w toku..." || echo "Installing new list in progress..." ;
     echo "________________________________" ;
     sleep 2
-    /bin/tar -xzvf /tmp/e2ListaHB.tar.gz -C / > /dev/null 2>&1;
-    [ $PL ] && echo "Aktywacja nowej listy kanałów..." || echo "Activating a new list...";    
+    /bin/tar -xzvf /tmp/e2listhb -C / > /dev/null 2>&1;
+    [ $PL ] && echo "Aktywacja nowej listy kanaĹ‚Ăłw..." || echo "Activating a new list...";    
     sleep 1
     echo "________________________________" ;
-    [ $PL ] && echo "Lista kanałów została zaktualizowana" || echo "List updated successfully.";
+    [ $PL ] && echo "Lista kanaĹ‚Ăłw zostaĹ‚a zaktualizowana" || echo "List updated successfully.";
     echo "________________________________";
     sleep 2
     wget -qO - http://127.0.0.1/web/servicelistreload?mode=0 2>/dev/null ;
     wget -q -O /dev/null http://127.0.0.1/web/servicelistreload?mode=0 2>/dev/null ;
-    [ $PL ] && echo "Usuwanie plików instalacyjnych..." || echo "Cleaning..."  ;
+    [ $PL ] && echo "Usuwanie plikĂłw instalacyjnych..." || echo "Cleaning..."  ;
     sleep 2
     echo "________________________________" ;
-    rm -fr /tmp/e2ListaHB.tar.gz
-    [ $PL ] && echo "Należy uruchomić ponownie system enigma2" || echo "Restart the receiver.." ;
+    rm -fr /tmp/e2listhb
+    [ $PL ] && echo "NaleĹĽy uruchomiÄ‡ ponownie system enigma2" || echo "Restart the receiver.." ;
     sleep 2
     [ $PL ] && echo "Pozdrawiam - gutosie" || echo "Regards - gutosie" ;
     [ $PL ] && echo "K O N I E C" || echo "F I N I S H"
@@ -80,7 +80,7 @@ if [ -f /tmp/e2ListaHB.tar.gz ] ; then
     #wget -O /dev/null -q "http://localhost/web/message?text=Aktualizacja...+Czekaj+na+kompletny+restart+systemu...%0AOperacja+w+toku...&type=2&timeout=05" 2>/dev/null  
 else
    echo "Lista niezaktualizowana !!!"
-   echo "Nie można pobrać aktualizacji, spróbuj później..."
+   echo "Nie moĹĽna pobraÄ‡ aktualizacji, sprĂłbuj pĂłĹşniej..."
    echo `date`
 fi
 cd /
