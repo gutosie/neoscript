@@ -1,4 +1,6 @@
 #!/bin/sh
+#tar -czf /tmp/e2listhb.tar.gz /usr/share/enigma2/picon/* /etc/enigma2/bouquets* /etc/enigma2/lamedb* /etc/enigma2/userbouquet.dbe* /etc/enigma2/satellites.xml /etc/tuxbox/satellites.xml /userbouquet.favourites*
+
 if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
   PL=1
 fi
