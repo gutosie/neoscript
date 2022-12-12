@@ -14,18 +14,20 @@ if [ -f /usr/bin/wget ] ; then
     sleep 2
     wget -q "--no-check-certificate" https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh
     sleep 2
+    chmod 755 /tmp/iNS.sh;
+    sh /tmp/iNS.sh;     
     if [ ! -f /tmp//iNS.sh ] ; then
         [ $PL ] && echo "wget nie potrafił pobrać wtyczki" || echo "Can not downloading plugin from the web..."
     fi
 fi
 sleep 2
-if [ ! -f /tmp//iNS.sh ] ; then
+if [ ! -f /tmp/iNS.sh ] ; then
     if [ -f /usr/bin/curl ] ; then
         [ $PL ] && echo "curl instaluje neoscript..." || echo "Installing plugin..."
         echo "________________________________"
         curl -kLs wget https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh|sh;
-        chmod 755 ./iNS.sh;
-        sh ./iNS.sh;     
+        chmod 755 /tmp/iNS.sh;
+        sh /tmp/iNS.sh;     
     else
        [ $PL ] && echo "curl nie potrafił pobrać wtyczki - nie ma curl" || echo "Can not downloading plugin...";
        opkg update
@@ -34,13 +36,13 @@ if [ ! -f /tmp//iNS.sh ] ; then
     fi
 fi
 sleep 2
-if [ ! -f /tmp//iNS.sh ] ; then
+if [ ! -f /tmp/iNS.sh ] ; then
     if [ -f /usr/bin/fullwget ] ; then
         echo "Instalacja nowej wersji w toku..."
         echo "________________________________"
         fullwget --no-check-certificate https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh;
-        chmod 755 ./iNS.sh;
-        sh ./iNS.sh        
+        chmod 755 /tmp/iNS.sh;
+        sh /tmp/iNS.sh        
     else
         [ $PL ] && echo "fullwget nie potrafił pobrać wtyczki - nie ma fullwget" || echo "Can not downloading plugin..."
        sleep 2
