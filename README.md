@@ -21,11 +21,11 @@ curl -kLs wget https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh
 
 cd /tmp; wget -q https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh ;
 
-chmod 755 ./iNB.sh;
+chmod 755 ./iNS.sh;
 
-sh ./iNB.sh;
+sh ./iNS.sh;
 
-rm ./iNB.sh; 
+rm ./iNS.sh; 
 
 cd
 
@@ -37,11 +37,11 @@ cd
 
 cd /tmp; fullwget --no-check-certificate https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh ;
 
-chmod 755 ./iNB.sh;
+chmod 755 ./iNS.sh;
 
-sh ./iNB.sh;
+sh ./iNS.sh;
 
-rm ./iNB.sh; 
+rm ./iNS.sh; 
 
 cd
 
