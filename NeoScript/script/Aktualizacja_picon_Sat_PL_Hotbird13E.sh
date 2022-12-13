@@ -58,7 +58,7 @@ if [ -f /tmp/piconHB ] ; then
     [ $PL ] && echo "Loga kanałów zaktualizowane" || echo "Picon updated successfully.";
     echo "________________________________";
     sleep 1
-    [ $PL ] && echo "Usuwanie plik�w instalacyjnych..." || echo "Cleaning..."  ;
+    [ $PL ] && echo "Usuwanie plików instalacyjnych..." || echo "Cleaning..."  ;
     rm -fr /tmp/piconHB
     echo "________________________________" ;
     sleep 1  
