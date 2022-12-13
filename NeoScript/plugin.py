@@ -50,8 +50,8 @@ def getCPU():
         
 class ScriptNeo(Screen):
         skin = """
-	<screen position="center,center" size="750,390" title="Updatel list" >
-            <widget name="list" render="Listbox" itemHeight="50" font="Regular;40" position="center,center" zPosition="1" size="730,370" scrollbarMode="showOnDemand" transparent="1">
+	<screen position="center,center" size="900,390" title="Updatel list" >
+            <widget name="list" render="Listbox" itemHeight="50" font="Regular;40" position="center,center" zPosition="1" size="870,370" scrollbarMode="showOnDemand" transparent="1">
             <convert type="StringList" font="Regular;70" />
           </widget>
 	</screen>"""
