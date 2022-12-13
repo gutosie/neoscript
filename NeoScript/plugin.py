@@ -109,6 +109,6 @@ def startList(menuid):
 from Plugins.Plugin import PluginDescriptor
 
 def Plugins(**kwargs):
-    list = [PluginDescriptor(name='List Tv Updater', description='TvList', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='ListTv', description=_('Installing List'), icon='listtv.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
-    list.append(PluginDescriptor(name=_('ListTvHB'), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main))
+    list = [PluginDescriptor(name='List Tv Updater', description='Installing List', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='List Tv Updater', description=_('Installing List'), icon='listtv.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
+    list.append(PluginDescriptor(name=_('List Tv Updater'), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main))
     return list
