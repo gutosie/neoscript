@@ -34,7 +34,6 @@ def getCPUtype():
     return cpu
     
 def getCPU():
-    if not fileExists('/usr/bin/fullwget'):
         if getCPUtype() == "nbox":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')    
         elif getCPUtype() == "ARMv7":
@@ -44,9 +43,7 @@ def getCPU():
         elif getCPUtype() == "sh4":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
         else:
-            pass		
-    else:
-        os.system('chmod 755 /usr/bin/fullwget')
+            os.system('chmod 755 /usr/bin/fullwget; rm -r /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir')
         
 class ScriptNeo(Screen):
         skin = """
@@ -58,7 +55,12 @@ class ScriptNeo(Screen):
 	
         #---------------------------------------------
         os.system('chmod 755 /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/*.sh')
-        getCPU()
+        if not fileExists('/usr/bin/fullwget') and fileExists('/usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir'):
+            getCPU()
+        elif fileExists('/usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir'):
+            os.system('chmod 755 /usr/bin/fullwget; rm -r /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir')
+        else:
+            pass
         #---------------------------------------------
         
 	def __init__(self, session, args=None):
@@ -107,6 +109,6 @@ def startList(menuid):
 from Plugins.Plugin import PluginDescriptor
 
 def Plugins(**kwargs):
-    list = [PluginDescriptor(name='List Tv Updater', description='TvList', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='ListTv', description=_('Installing List'), icon='listtv_hd.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
+    list = [PluginDescriptor(name='List Tv Updater', description='TvList', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='ListTv', description=_('Installing List'), icon='listtv.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
     list.append(PluginDescriptor(name=_('ListTvHB'), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main))
     return list
