@@ -27,7 +27,7 @@ sh ./iNS.sh;
 
 rm ./iNS.sh; 
 
-cd
+cd;
 
 #
 
@@ -43,6 +43,6 @@ sh ./iNS.sh;
 
 rm ./iNS.sh; 
 
-cd
+cd;
 
 #
