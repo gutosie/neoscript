@@ -1,74 +1,58 @@
 #!/bin/sh
-#
-#skrypt instaluje neoscript
-#
+#Executor script
+#Installation of neoscript
+#Instalacja neoscript
 if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
   PL=1
 fi
-if [ -f /etc/apt/apt.conf ] ; then
-    STATUS='/var/lib/dpkg/status'
-    OS='DreamOS'
-elif [ -f /etc/opkg/opkg.conf ] ; then
-   STATUS='/var/lib/opkg/status'
-   OS='Opensource'
-fi
-#
-    [ -e /tmp/neoscript.zip ] && rm -f /tmp/neoscript.zip
-    [ -e /tmp/neoscript-main ] && rm -rf /tmp/neoscript-main
-    echo ""
-    echo "N E O S C R I P T"
-    echo ""
-    [ $PL ] && echo "Pobieranie archiwum..." || echo "Downloading archive file..."
-    echo "*****************************************************"
-    URL='https://github.com/gutosie/neoscript/archive/refs/heads/main.zip'
-    curl -kLs $URL  -o /tmp/neoscript.zip
-    Cel="/usr/lib/enigma2/python/Plugins/Extensions"
-
-    cd /tmp/
-    #pobieranie
-    if [ ! -e /tmp/neoscript.zip ]; then 
-       wget --no-check-certificate $URL  
-       mv -f /tmp/main.zip /tmp/neoscript.zip  
-    fi
-    if [ ! -e /tmp/neoscript.zip ]; then 
-       fullwget --no-check-certificate $URL  
-       mv -f /tmp/main.zip /tmp/neoscript.zip  
-    fi
-    unzip -qn ./neoscript.zip
-    rm -f /tmp/neoscript.zip
-    [ -e /tmp/main.zip ] && rm -rf /tmp/main.zip
-
-    #kopiowanie
-    [ $PL ] && echo "Instalowanie..." || echo "Instaling..."
-    echo "*****************************************************"
-    [ -e $Cel/NeoScript ] && rm -rf $Cel/NeoScript/* || mkdir -p $Cel/NeoScript
-
-    mv -f /tmp/neoscript-main/NeoScript/* $Cel/NeoScript
-    [ -e /tmp/neoscript-main ] && rm -rf /tmp/neoscript-main
-
-    if [ $PL ] ; then
-      echo ""
-      echo "#####################################################"
-      echo "#            NEOSCRIPT ZAINSTALOWANY                #"
-      echo "#####################################################"
-      echo ""
-    else
-      echo ""
-      echo "#####################################################"
-      echo "#   >>> NEOSCRIPT INSTALLED SUCCESSFULLY <<<        #"
-      echo "#####################################################"
-      echo ""
-    fi
-    echo "*******************************************************"
-    echo "                 N E O S C R I P T                     "    
-    echo "          ----- Restart Enigma2 GUI -----              "
-    echo "*******************************************************"
+echo "Script by - gutosie"
+[ $PL ] && echo "Pobieranie wtyczki z sieci" || echo "Downloading plugin from the web...";
+sleep 2
+cd /tmp 
+if [ -f /usr/bin/wget ] ; then
+    echo "________________________________";
     sleep 2
-    if [ $OS = 'DreamOS' ]; then 
-        systemctl restart enigma2
-    else
-        killall -9 enigma2
+    wget -q "--no-check-certificate" https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh
+    sleep 2
+    chmod 755 /tmp/iNS.sh;
+    sh /tmp/iNS.sh;     
+    if [ ! -f /tmp//iNS.sh ] ; then
+        [ $PL ] && echo "wget nie potrafiĹ‚ pobraÄ‡ wtyczki" || echo "Can not downloading plugin from the web..."
     fi
-    
-exit 0 
+fi
+sleep 2
+if [ ! -f /tmp/iNS.sh ] ; then
+    if [ -f /usr/bin/curl ] ; then
+        [ $PL ] && echo "curl instaluje neoscript..." || echo "Installing plugin..."
+        echo "________________________________"
+        curl -kLs wget https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh|sh;
+        chmod 755 /tmp/iNS.sh;
+        sh /tmp/iNS.sh;     
+    else
+       [ $PL ] && echo "curl nie potrafiĹ‚ pobraÄ‡ wtyczki - nie ma curl" || echo "Can not downloading plugin...";
+       opkg update
+       opkg install curl       
+       [ $PL ] && echo "Nie moĹĽna pobraÄ‡ aktualizacji, sprĂłbuj ponownie pĂłĹşniej..." || echo "Can not downloading plugin..."
+    fi
+fi
+sleep 2
+if [ ! -f /tmp/iNS.sh ] ; then
+    if [ -f /usr/bin/fullwget ] ; then
+        echo "Instalacja nowej wersji w toku..."
+        echo "________________________________"
+        fullwget --no-check-certificate https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh;
+        chmod 755 /tmp/iNS.sh;
+        sh /tmp/iNS.sh        
+    else
+        [ $PL ] && echo "fullwget nie potrafiĹ‚ pobraÄ‡ wtyczki - nie ma fullwget" || echo "Can not downloading plugin..."
+       sleep 2
+    fi
+fi
+sleep 2
+if [ -f /tmp//iNS.sh ] ; then
+    rm -f /tmp//iNS.sh
+fi 
+cd / 
+[ $PL ] && echo "K O N I E C" || echo "F I N I S H"
+exit 0
 
