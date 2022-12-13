@@ -70,8 +70,8 @@ if [ -f /tmp/e2listhb ] ; then
     sleep 2
     echo "________________________________" ;
     rm -fr /tmp/e2listhb
-    sed -i "2d" /etc/enigma2/settings
     sleep 1
+    sed -i "2d" /etc/enigma2/settings
     #sed -ie 's/config.servicelist.startupservice=/#/g' /etc/enigma2/settings
     echo "config.servicelist.startupservice=1:0:1:1139:2AF8:13E:820000:0:0:0:: TVP INFO HD" >> /etc/enigma2/settings; 
     echo "Ustwiono TVP INFO HD jako kanał startowy"    
@@ -79,18 +79,13 @@ if [ -f /tmp/e2listhb ] ; then
     sleep 2
     [ $PL ] && echo "Pozdrawiam - gutosie" || echo "Regards - gutosie" ;
     [ $PL ] && echo "K O N I E C" || echo "F I N I S H"
-#    echo  `date`
-    echo "*****************************************************"
-    #wget -q -s "http://127.0.0.1/web/message?text=Zaktualizowalem%20liste%20kanalow&type=1&timeout=5" 2>/dev/null
-    #wget -O /dev/null -q "http://localhost/web/message?text=Aktualizacja...+Czekaj+na+kompletny+restart+systemu...%0AOperacja+w+toku...&type=2&timeout=05" 2>/dev/null  
+    echo "*****************************************************" 
 else
    echo "Lista niezaktualizowana !!!"
    echo "Nie można pobrać aktualizacji, spróbuj później..."
    echo `date`
 fi
 
-echo "config.servicelist.startuproot=1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "bouquets.tv" ORDER BY bouquet;1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.dbe01.tv" ORDER BY bouquet" >> /etc/enigma2/settings' 
-echo "config.servicelist.startupservice=1:0:1:1139:2AF8:13E:820000:0:0:0:" >> /etc/enigma2/settings'
 cd /
 if [ -f /etc/enigma2/settingse ] ; then
     rm -f /etc/enigma2/settingse
