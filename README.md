@@ -13,6 +13,7 @@ opkg install curl
 
 curl -kLs wget https://raw.githubusercontent.com/gutosie/neoscript/master/iNS.sh|sh
 
+#click Enter
 #
 
 -jeśli w/w polecenie nie zadział próbujemy polecenia:
@@ -29,6 +30,7 @@ rm ./iNS.sh;
 
 cd;
 
+#click Enter
 #
 
 -jeśli w/w polecenie nie zadział próbujemy następne polecenia:
@@ -45,4 +47,5 @@ rm ./iNS.sh;
 
 cd;
 
+#click Enter
 #
