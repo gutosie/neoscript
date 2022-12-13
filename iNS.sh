@@ -28,7 +28,7 @@ fi
     #pobieranie
     if [ ! -e /tmp/neoscript.zip ]; then 
        wget --no-check-certificate $URL  
-       mv -f /tmp/main.zip /tmp/neoboot.zip  
+       mv -f /tmp/main.zip /tmp/neoscript.zip  
     fi
     if [ ! -e /tmp/neoscript.zip ]; then 
        fullwget --no-check-certificate $URL  
