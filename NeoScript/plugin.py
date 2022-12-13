@@ -2,7 +2,6 @@
 ## ScriptNeo
 ## by gutosie
 ##
-from enigma import getDesktop
 from Components.ActionMap import ActionMap
 from Components.MenuList import MenuList
 from os import listdir
@@ -13,24 +12,6 @@ import os
 import sys
 from os import system
 from Tools.Directories import fileExists, SCOPE_PLUGINS
-
-############################################
-
-def getDS():
-    s = getDesktop(0).size()
-    return (s.width(), s.height())
-
-def isFHD():
-    desktopSize = getDS()
-    return desktopSize[0] == 1920
-
-def isHD():
-    desktopSize = getDS()
-    return desktopSize[0] >= 1280 and desktopSize[0] < 1920
-
-def isUHD():
-    desktopSize = getDS()
-    return desktopSize[0] >= 1920 and desktopSize[0] < 3840
 
 def getCPUtype():
     cpu = 'UNKNOWN'
@@ -68,21 +49,13 @@ def getCPU():
         os.system('chmod 755 /usr/bin/fullwget')
         
 class ScriptNeo(Screen):
-    if isFHD():
-	skin = """
-	<screen position="center,center" size="1000,750" title="Updatel list" >
-            <widget name="list" render="Listbox" itemHeight="50" font="Regular;40" position="25,80" zPosition="1" size="950,650" scrollbarMode="showOnDemand" transparent="1">
+        skin = """
+	<screen position="center,center" size="750,390" title="Updatel list" >
+            <widget name="list" render="Listbox" itemHeight="50" font="Regular;40" position="center,center" zPosition="1" size="730,370" scrollbarMode="showOnDemand" transparent="1">
             <convert type="StringList" font="Regular;70" />
           </widget>
 	</screen>"""
-    else:
-	skin = """
-	<screen position="center,center" size="700,340" title="NeoScript" >
-		<widget name="list" position="center,center" size="680,320" zPosition="1" font="Regular;24" transparent="1" 
-scrollbarMode="showOnDemand" />
-	</screen>"""
-
-
+	
         #---------------------------------------------
         os.system('chmod 755 /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/*.sh')
         getCPU()
@@ -118,9 +91,7 @@ scrollbarMode="showOnDemand" />
 			script = "/usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/%s.sh" % script
 			
 			self.session.open(Console, title, cmdlist=[script])
-
-############################################
-
+			
 def main(session, **kwargs):
 	session.open(ScriptNeo)
 
@@ -136,10 +107,6 @@ def startList(menuid):
 from Plugins.Plugin import PluginDescriptor
 
 def Plugins(**kwargs):
-    if isFHD():
-        list = [PluginDescriptor(name='List Tv Updater', description='TvList', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='ListTv', description=_('Installing List'), icon='listtv_fhd.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
-        list.append(PluginDescriptor(name=_('ListTvHB'), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main))
-    else:
-        list = [PluginDescriptor(name='List Tv Updater', description='TvList', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='ListTv', description=_('Installing List'), icon='listtv_hd.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
-        list.append(PluginDescriptor(name=_('ListTvHB'), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main))
+    list = [PluginDescriptor(name='List Tv Updater', description='TvList', where=PluginDescriptor.WHERE_MENU, fnc=startList), PluginDescriptor(name='ListTv', description=_('Installing List'), icon='listtv_hd.png', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
+    list.append(PluginDescriptor(name=_('ListTvHB'), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main))
     return list
