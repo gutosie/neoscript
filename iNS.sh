@@ -29,14 +29,17 @@ fi
     if [ -f /usr/bin/curl ] ; then    
         curl -kLs https://github.com/gutosie/neoscript/archive/refs/heads/main.zip -o /tmp/neoscript.zip
     fi
-    if [ ! -e /tmp/neoscript.zip ]; then 
-       wget --no-check-certificate $URL  
-       $MVmain  
+    if [ ! -e /tmp/neoscript.zip ] ; then
+        if [ -f /usr/bin/wget ]; then 
+           wget --no-check-certificate $URL  
+           $MVmain
+        fi
     fi
-    
-    if [ ! -e /tmp/neoscript.zip ]; then 
-       fullwget --no-check-certificate $URL  
-       $MVmain  
+    if [ ! -e /tmp/neoscript.zip ] ; then    
+        if [ -f /usr/bin/fullwget ]; then 
+           fullwget --no-check-certificate $URL  
+           $MVmain
+        fi           
     fi    
   
     if [ ! -e /tmp/neoscript.zip ]; then
