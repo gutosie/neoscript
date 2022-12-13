@@ -27,8 +27,7 @@ fi
 
     #pobieranie i instalowanie
     if [ -f /usr/bin/curl ] ; then    
-        curl -kLs $URL  -o /tmp/neoscript.zip
-        $MVmain 
+        curl -kLs https://github.com/gutosie/neoscript/archive/refs/heads/main.zip -o /tmp/neoscript.zip
     fi
     if [ ! -e /tmp/neoscript.zip ]; then 
        wget --no-check-certificate $URL  
