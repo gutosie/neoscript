@@ -42,8 +42,8 @@ def getCPU():
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetmips /usr/bin/fullwget')                
         elif getCPUtype() == "sh4":
                 os.system('mv /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir/fullwgetsh4 /usr/bin/fullwget')
-        else:
-            os.system('chmod 755 /usr/bin/fullwget; rm -r /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir')
+		
+        os.system('chmod 755 /usr/bin/fullwget; rm -r /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir')
         
 class ScriptNeo(Screen):
         skin = """
