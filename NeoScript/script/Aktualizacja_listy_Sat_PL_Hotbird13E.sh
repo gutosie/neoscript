@@ -64,8 +64,8 @@ if [ -f /tmp/e2listhb ] ; then
     [ $PL ] && echo "Lista kanałów została zaktualizowana" || echo "List updated successfully.";
     echo "________________________________";
     sleep 2
-    wget -qO - http://127.0.0.1/web/servicelistreload?mode=0 2>/dev/null ;
-    wget -q -O /dev/null http://127.0.0.1/web/servicelistreload?mode=0 2>/dev/null ;
+    wget -q -O /dev/null http://127.0.0.1/web/servicelistreload?mode=0  > /dev/null 2>&1 ;
+    wget -qO - http://127.0.0.1/web/servicelistreload?mode=0  > /dev/null 2>&1 ;
     [ $PL ] && echo "Usuwanie plików instalacyjnych..." || echo "Cleaning..."  ;
     sleep 2
     echo "________________________________" ;
