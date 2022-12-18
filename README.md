@@ -49,3 +49,7 @@ cd;
 
 #click Enter
 #
+
+zainstaluj po ftp or install via ftp
+pobierz - download:
+https://codeload.github.com/gutosie/neoscript/zip/refs/heads/main
