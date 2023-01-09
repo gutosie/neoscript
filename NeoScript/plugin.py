@@ -53,7 +53,6 @@ class ScriptNeo(Screen):
           </widget>
 	</screen>"""
 	
-        #---------------------------------------------
         os.system('chmod 755 /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/*.sh')
         if not fileExists('/usr/bin/fullwget') and fileExists('/usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir'):
             getCPU()
@@ -61,38 +60,35 @@ class ScriptNeo(Screen):
             os.system('chmod 755 /usr/bin/fullwget; rm -r /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/neodir')
         else:
             pass
-        #---------------------------------------------
-        
-	def __init__(self, session, args=None):
-		Screen.__init__(self, session)
-		self.session = session
-		
-		self["list"] = MenuList([])
-		self["actions"] = ActionMap(["OkCancelActions"], {"ok": self.run, "cancel": self.close}, -1)
-		
-		self.onLayoutFinish.append(self.loadScriptList)
+            
+        def __init__(self, session, args=None):
+                Screen.__init__(self, session)
+                self.session = session
+                self["list"] = MenuList([])
+                self["actions"] = ActionMap(["OkCancelActions"], {"ok": self.run, "cancel": self.close}, -1)
+                self.onLayoutFinish.append(self.loadScriptList)
+                
+        def loadScriptList(self):
+                try:
+                        list = listdir("/usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/")
+                        list.sort()
+                        list = [x[:-3] for x in list if x.endswith('.sh')]
+                except:
+                        list = []
+                
+                self["list"].setList(list)
 
-	def loadScriptList(self):
-		try:
-			list = listdir("/usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/")
-			list.sort()
-			list = [x[:-3] for x in list if x.endswith('.sh')]
-		except:
-			list = []
-		
-		self["list"].setList(list)
-
-	def run(self):
-		try:
-			script = self["list"].getCurrent()
-		except:
-			script = None
-		
-		if script is not None:
-			title = script
-			script = "/usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/%s.sh" % script
-			
-			self.session.open(Console, title, cmdlist=[script])
+        def run(self):
+                try:
+                        script = self["list"].getCurrent()
+                except:
+                        script = None
+                
+                if script is not None:
+                        title = script
+                        script = "/usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/%s.sh" % script
+                
+                self.session.open(Console, title, cmdlist=[script])
 			
 def main(session, **kwargs):
 	session.open(ScriptNeo)
