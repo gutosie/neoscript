@@ -44,7 +44,7 @@ if [ ! -f /tmp/e2listhb ] ; then
     fi
 fi
 
-sleep 2
+sleep 10
 
 if [ -f /tmp/e2listhb ] ; then
     [ $PL ] && echo "Listy kanałów pobrana prawidłowo" || echo "Channel lists downloaded";
@@ -92,7 +92,7 @@ else
         [ $PL ] && echo "aktualizacja feed" || echo "update feed";
         sleep 2
         opkg update > /dev/null 2>&1
-        $PL ] && echo "Pobieranie curl" || echo "Downloading curl";
+        [ $PL ] && echo "Pobieranie curl" || echo "Downloading curl";
         sleep 2
         opkg install curl > /dev/null 2>&1
         sleep 2
