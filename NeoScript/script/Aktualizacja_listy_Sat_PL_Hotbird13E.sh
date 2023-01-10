@@ -15,7 +15,7 @@ if [ -f /usr/bin/wget ] ; then
     echo "________________________________";
     sleep 2
     #wget -q "--no-check-certificate" wget -O - -q
-    wget -q --no-check-certificate $LinkNeoList > /dev/null 2>&1
+    wget -q --no-check-certificate https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/e2listhb > /dev/null 2>&1
     if [ ! -f /tmp/e2listhb ] ; then
        echo "wget nie potrafił pobrać listy kanałów"
        sleep 2
@@ -84,6 +84,26 @@ else
    echo "Lista niezaktualizowana !!!"
    echo "Nie można pobrać aktualizacji, spróbuj później..."
    echo `date`
+   echo "*****************************************************"
+   sleep 2
+   if [ ! -f /usr/bin/curl ] ; then
+        [ $PL ] && echo "Pobieranie curl" || echo "Downloading curl";
+        sleep 2
+        [ $PL ] && echo "aktualizacja feed" || echo "update feed";
+        sleep 2
+        opkg update > /dev/null 2>&1
+        $PL ] && echo "Pobieranie curl" || echo "Downloading curl";
+        sleep 2
+        opkg install curl > /dev/null 2>&1
+        sleep 2
+        
+        if [ ! -f /usr/bin/curl ] ; then
+                $PL ] && echo "Nie udana instalacja curl" || echo "Installing curl error"
+        fi
+        echo "Spróbuj aktualizacji jeszcze raz..."        
+    else
+        [ $PL ] && echo "curl jest zainstalowany" || echo "curl is installed";
+    fi
 fi
 
 cd /
