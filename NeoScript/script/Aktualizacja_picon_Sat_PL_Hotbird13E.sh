@@ -50,6 +50,9 @@ if [ -f /tmp/piconHB ] ; then
     [ $PL ] && echo "Loga kanałów pobrane prawidłowo" || echo "Picon lists downloaded";
     [ $PL ] && echo "Instalacja nowechy picon w toku..." || echo "Installing new picon in progress..." ;
     echo "________________________________" ;
+    [ $PL ] && echo "Usuwanie picon..." || echo "Deleting picon...";
+    sleep 2
+    rm -r /usr/share/enigma2/picon/*
     sleep 2
     /bin/tar -xzvf /tmp/piconHB -C / > /dev/null 2>&1;
     [ $PL ] && echo "Aktywacja picon dla listy kanałów..." || echo "Activating a new picon...";    
