@@ -52,7 +52,7 @@ if [ -f /tmp/piconHB ] ; then
     echo "________________________________" ;
     sleep 2
     [ $PL ] && echo "Usuwanie picon..." || echo "Deleting picon..."; 
-    rm -r /usr/share/enigma2/picon/*
+    rm -r /usr/share/enigma2/picon/* > /dev/null 2>&1;
     /bin/tar -xzvf /tmp/piconHB -C / > /dev/null 2>&1;
     [ $PL ] && echo "Aktywacja picon dla listy kanałów..." || echo "Activating a new picon...";    
     sleep 1
