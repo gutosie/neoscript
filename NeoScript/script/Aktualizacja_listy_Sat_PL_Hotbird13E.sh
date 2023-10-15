@@ -72,9 +72,10 @@ if [ -f /tmp/e2listhb ] ; then
     rm -fr /tmp/e2listhb
     sleep 1
     #sed -i "2d" /etc/enigma2/settings
-    sed -ie 's/config.servicelist.startupservice=/#/g' /etc/enigma2/settings
-    echo "config.servicelist.startupservice=1:0:1:1139:2AF8:13E:820000:0:0:0:: TVP INFO HD" >> /etc/enigma2/settings;
-    echo "Ustwiono TVP INFO HD jako kanał startowy"    
+    #sed -ie 's/config.servicelist.startupservice=/#/g' /etc/enigma2/settings
+    #echo "config.servicelist.startupservice=1:0:1:1139:2AF8:13E:820000:0:0:0:: TVP INFO HD" >> /etc/enigma2/settings;
+    #echo "Ustwiono TVP INFO HD jako kanał startowy"
+    echo "Wybierz kanał startowy"
     [ $PL ] && echo "Należy uruchomić ponownie system enigma2" || echo "Restart the receiver.." ;
     sleep 2
     [ $PL ] && echo "Pozdrawiam - gutosie" || echo "Regards - gutosie" ;
