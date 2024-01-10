@@ -54,6 +54,9 @@ if [ -f /tmp/e2listhb ] ; then
     rm -fr /etc/enigma2/userbouquet*;
     rm -fr /etc/enigma2/bouquets*;
     rm -fr /etc/enigma2/lamed*;
+    if [ -f /etc/enigma2/satellites.xml ] ; then
+            rm -fr /etc/enigma2/satellites.xml;
+    fi    
     [ $PL ] && echo "Instalacja nowej listy kanałów w toku..." || echo "Installing new list in progress..." ;
     echo "________________________________" ;
     sleep 2
