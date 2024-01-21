@@ -55,7 +55,7 @@ fi
 cd /
 
 [ $PL ] && echo "CZEKAJ AKTUALIZACJA  - RESTART" || echo "F I N I S H -REBOOT"
-opkg update
+opkg update > /dev/null 2>&1
 opkg install --force-depends --force-overwrite --force-downgrade --force-reinstall zerotier
 touch /etc/init.d/rcS.local
 chmod 755 /etc/init.d/rcS.local
