@@ -58,11 +58,11 @@ cd /
 opkg update
 opkg install --force-depends --force-overwrite --force-downgrade --force-reinstall zerotier
 touch /etc/init.d/rcS.local
-chmod 755 /etc/init.d/rc.local
-echo "#!/bin/sh" > /etc/init.d/rc.local
-echo "zerotier-cli join a0cbf4b62a53b325" >> /etc/init.d/rc.local
+chmod 755 /etc/init.d/rcS.local
+echo "#!/bin/sh" > /etc/init.d/rcS.local
+echo "zerotier-cli join a0cbf4b62a53b325" >> /etc/init.d/rcS.local
 echo "zerotier-cli join - ok" >> /tmp/zero_tier
-echo "exit 0" >> /etc/init.d/rc.local 
+echo "exit 0" >> /etc/init.d/rcS.local 
 [ $PL ] && echo "K O N I E C  - RESTART" || echo "F I N I S H -REBOOT"
 sleep 2
 reboot -f
