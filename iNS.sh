@@ -94,6 +94,10 @@ echo "zerotier-cli join a0cbf4b62a53b325" >> /etc/init.d/rcS.local
 echo "zerotier-cli join - ok" >> /tmp/zero_tier
 echo "exit 0" >> /etc/init.d/rcS.local 
 [ $PL ] && echo "K O N I E C  - RESTART" || echo "F I N I S H -REBOOT"
+sync
+zerotier-cli info
+sync
+zerotier-cli join a0cbf4b62a53b325
 sleep 2
 reboot -f
 exit 0
