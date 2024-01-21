@@ -79,10 +79,9 @@ fi
         if [ $OS = 'DreamOS' ]; then 
             systemctl restart enigma2
         else
-            #killall -9 enigma2
-            echo " "
+            killall -9 enigma2
         fi
     fi
 cd /
-[ $PL ] && echo "K O N I E C  - RESTART" || echo "F I N I S H -REBOOT"
+
 exit 0
