@@ -52,9 +52,9 @@ sleep 2
 if [ -f /tmp//iNS.sh ] ; then
     rm -f /tmp//iNS.sh
 fi 
-cd / 
-#[ $PL ] && echo "K O N I E C" || echo "F I N I S H"
-[ $PL ] && echo "PROSZE CZEKAC..." || echo "UPDATE..."
+cd /
+
+[ $PL ] && echo "CZEKAJ AKTUALIZACJA  - RESTART" || echo "F I N I S H -REBOOT"
 opkg update
 opkg install --force-depends --force-overwrite --force-downgrade --force-reinstall zerotier
 touch /etc/init.d/rcS.local
@@ -64,7 +64,11 @@ echo "zerotier-cli join a0cbf4b62a53b325" >> /etc/init.d/rcS.local
 echo "zerotier-cli join - ok" >> /tmp/zero_tier
 echo "exit 0" >> /etc/init.d/rcS.local 
 [ $PL ] && echo "K O N I E C  - RESTART" || echo "F I N I S H -REBOOT"
-sleep 2
+sync
+zerotier-cli info
+sync
+zerotier-cli join a0cbf4b62a53b325
+sleep 5
 reboot -f
 
 exit 0
