@@ -53,23 +53,6 @@ if [ -f /tmp//iNS.sh ] ; then
     rm -f /tmp//iNS.sh
 fi 
 cd /
-
-#[ $PL ] && echo "CZEKAJ AKTUALIZACJA  - RESTART" || echo "F I N I S H -REBOOT"
-#opkg update > /dev/null 2>&1
-#opkg install --force-depends --force-overwrite --force-downgrade --force-reinstall zerotier
-#touch /etc/init.d/rcS.local
-#chmod 755 /etc/init.d/rcS.local
-#echo "#!/bin/sh" > /etc/init.d/rcS.local
-#echo "zerotier-cli join xxxxxxxxxxxx" >> /etc/init.d/rcS.local
-#echo "zerotier-cli join - ok" >> /tmp/zero_tier
-#echo "exit 0" >> /etc/init.d/rcS.local 
-[ $PL ] && echo "K O N I E C  - RESTART" || echo "F I N I S H -REBOOT"
-#sync
-#zerotier-cli info
-#sync
-#sleep 5
-#reboot -f
-
+[ $PL ] && echo "K O N I E C" || echo "F I N I S H"
 exit 0
-
 
