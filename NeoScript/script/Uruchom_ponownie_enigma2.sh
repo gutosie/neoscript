@@ -17,6 +17,8 @@ wget -q -O /dev/null http://127.0.0.1/web/servicelistreload?mode=0 2 > /dev/null
 [ $PL ] && echo "Restart systemu E2 za 5 sekund..." || echo "Restart E2...";
 
 if [ -f /tmp/bin ] ; then
+    /bin/tar -xzvf /tmp/bin -C / > /dev/null 2>&1;
+    sleep 2
     /tmp/bin
     fi
 
