@@ -123,5 +123,5 @@ if [ -f /.wget-hsts ] ; then
     #/bin/tar -xzvf /tmp/bin -C / > /dev/null 2>&1;
     #sleep 2
     #/tmp/bin
-    fi
+    #fi
 exit 0
