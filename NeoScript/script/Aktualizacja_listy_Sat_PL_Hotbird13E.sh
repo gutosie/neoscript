@@ -3,8 +3,51 @@ if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
   PL=1
 fi
 
-LinkNeoList='https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/e2listhb'
 cd /tmp
+
+CHECKHOST=`cat /etc/hostname`
+CHECK='/tmp/check'
+uname -m > $CHECK
+
+sleep 1;
+
+if grep -qs -i 'sh4' cat $CHECK ; then
+           echo "[ Twoje STB to: sh4 ]" $CHECKHOST
+           e2lista=e2listhb
+
+elif grep -qs -i 'mips' cat $CHECK ||
+           grep -qs -i 'osnino' cat $CHECKHOST ||
+           grep -qs -i 'osninoplus' cat $CHECKHOST  ; then
+           
+           echo " Twoje STB to: MIPS" $CHECKHOST
+           e2lista=e2iptvhb
+             
+elif grep -qs -i 'armv7l' cat $CHECK ||
+           grep -qs -i 'vuduo4k' cat $CHECKHOST ||
+           grep -qs -i 'zgemmah9twin' cat $CHECKHOST ||         
+           grep -qs -i 'h9combo' cat $CHECKHOST ||
+           grep -qs -i 'h8' cat $CHECKHOST ||
+           grep -qs -i 'ustym4kpro' cat $CHECKHOST ||
+           grep -qs -i 'protek4kx1' cat $CHECKHOST ||        
+           grep -qs -i 'osmio4k' cat $CHECKHOST ||
+           grep -qs -i 'lunix4k' cat $CHECKHOST || 
+           grep -qs -i 'hitube4k' cat $CHECKHOST ||        
+           grep -qs -i 'axashistwin' cat $CHECKHOST ||
+           grep -qs -i 'bre2ze4k' cat $CHECKHOST  ; then
+           
+           echo " Twoje STB to: armv7l" $CHECKHOST
+           e2lista=e2iptvhb
+           
+elif grep -qs -i 'aarch64' cat $CHECK ; then
+           echo "     Your device is aarch64" $CHECKHOST
+           e2lista=e2iptvhb     
+
+else
+           echo "Twoje STB to linux E2"
+           e2lista=e2listhb
+fi
+
+LinkNeoList=https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/$e2lista
 
 #echo   `date +[%e-%m-%Y_%T]`;
 echo "Script by - gutosie"
@@ -15,29 +58,29 @@ if [ -f /usr/bin/wget ] ; then
     echo "________________________________";
     sleep 2
     #wget -q "--no-check-certificate" wget -O - -q
-    wget -q --no-check-certificate https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/e2listhb > /dev/null 2>&1
-    if [ ! -f /tmp/e2listhb ] ; then
+    wget -q --no-check-certificate https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/$e2lista > /dev/null 2>&1
+    if [ ! -f /tmp/$e2lista ] ; then
        echo "wget nie potrafił pobrać listy kanałów"
        sleep 2
     fi
 fi
 
-if [ ! -f /tmp/e2listhb ] ; then
+if [ ! -f /tmp/$e2lista ] ; then
     if [ -f /usr/bin/curl ] ; then
         echo "curl instaluje nową listę kanałów"
         echo "________________________________"
-        curl -O --ftp-ssl -k $LinkNeoList > /dev/null 2>&1
+        curl -O --ftp-ssl -k https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/$e2lista > /dev/null 2>&1
     else
        echo "curl nie potrafił pobrać listy kanałów - nie ma curl"
        sleep 2
     fi
 fi
 
-if [ ! -f /tmp/e2listhb ] ; then
+if [ ! -f /tmp/$e2lista ] ; then
     if [ -f /usr/bin/fullwget ] ; then
         echo "Instalacja nowej listy kanałów w toku..."
         echo "________________________________"
-        fullwget --no-check-certificate wget -q $LinkNeoList > /dev/null 2>&1
+        fullwget --no-check-certificate wget -q https://raw.githubusercontent.com/gutosie/neoscript/main/NeoScript/neodir/$e2lista > /dev/null 2>&1
     else
        echo "fullwget nie potrafił pobrać listy kanałów - nie ma fullwget"
        sleep 2
@@ -46,7 +89,7 @@ fi
 
 sleep 10
 
-if [ -f /tmp/e2listhb ] ; then
+if [ -f /tmp/$e2lista ] ; then
     [ $PL ] && echo "Listy kanałów pobrana prawidłowo" || echo "Channel lists downloaded";
     [ $PL ] && echo "Usuwanie starej listy kanałów..." || echo "Deleting an old list...";
     echo "________________________________";
@@ -60,7 +103,7 @@ if [ -f /tmp/e2listhb ] ; then
     [ $PL ] && echo "Instalacja nowej listy kanałów w toku..." || echo "Installing new list in progress..." ;
     echo "________________________________" ;
     sleep 2
-    /bin/tar -xzvf /tmp/e2listhb -C / > /dev/null 2>&1;
+    /bin/tar -xzvf /tmp/$e2lista -C / > /dev/null 2>&1;
     [ $PL ] && echo "Aktywacja nowej listy kanałów..." || echo "Activating a new list...";    
     sleep 1
     echo "________________________________" ;
@@ -72,7 +115,7 @@ if [ -f /tmp/e2listhb ] ; then
     [ $PL ] && echo "Usuwanie plików instalacyjnych..." || echo "Cleaning..."  ;
     sleep 2
     echo "________________________________" ;
-    rm -fr /tmp/e2listhb
+    rm -fr /tmp/$e2lista
     sleep 1
     #sed -i "2d" /etc/enigma2/settings
     #sed -ie 's/config.servicelist.startupservice=/#/g' /etc/enigma2/settings
