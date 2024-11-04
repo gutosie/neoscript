@@ -15,22 +15,17 @@ if grep -qs -i 'sh4' cat $CHECK ; then
            echo "[ Twoje STB to: sh4 ]" $CHECKHOST
            e2lista=e2listhb
 
-elif grep -qs -i 'mips' cat $CHECK ||
-           grep -qs -i 'vuzero' cat $CHECKHOST |
-           grep -qs -i 'miniplus' cat $CHECKHOST |
+elif #grep -qs -i 'mips' cat $CHECK ||
            grep -qs -i 'osnino' cat $CHECKHOST ||
            grep -qs -i 'osninoplus' cat $CHECKHOST  ; then
            
            echo " Twoje STB to: MIPS" $CHECKHOST
            e2lista=e2iptvhb
              
-elif grep -qs -i 'armv7l' cat $CHECK ||
+elif #grep -qs -i 'armv7l' cat $CHECK ||
            grep -qs -i 'vuduo4k' cat $CHECKHOST ||
-           grep -qs -i 'vuuno4k' cat $CHECKHOST ||
-           grep -qs -i 'zgemmah82h' cat $CHECKHOST ||
            grep -qs -i 'zgemmah9twin' cat $CHECKHOST ||         
            grep -qs -i 'h9combo' cat $CHECKHOST ||
-           grep -qs -i 'h9se' cat $CHECKHOST ||
            grep -qs -i 'h8' cat $CHECKHOST ||
            grep -qs -i 'ustym4kpro' cat $CHECKHOST ||
            grep -qs -i 'protek4kx1' cat $CHECKHOST ||        
@@ -41,14 +36,10 @@ elif grep -qs -i 'armv7l' cat $CHECK ||
            grep -qs -i 'bre2ze4k' cat $CHECKHOST  ; then
            
            echo " Twoje STB to: armv7l" $CHECKHOST
-           e2lista=e2iptvhb
-           
-elif grep -qs -i 'aarch64' cat $CHECK ; then
-           echo "     Your device is aarch64" $CHECKHOST
-           e2lista=e2iptvhb     
+           e2lista=e2iptvhb    
 
 else
-           echo "Twoje STB to linux E2"
+           echo "Twoje STB to" $CHECKHOST
            e2lista=e2listhb
 fi
 
