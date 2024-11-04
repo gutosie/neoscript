@@ -16,6 +16,8 @@ if grep -qs -i 'sh4' cat $CHECK ; then
            e2lista=e2listhb
 
 elif grep -qs -i 'mips' cat $CHECK ||
+           grep -qs -i 'vuzero' cat $CHECKHOST |
+           grep -qs -i 'miniplus' cat $CHECKHOST |
            grep -qs -i 'osnino' cat $CHECKHOST ||
            grep -qs -i 'osninoplus' cat $CHECKHOST  ; then
            
@@ -24,8 +26,11 @@ elif grep -qs -i 'mips' cat $CHECK ||
              
 elif grep -qs -i 'armv7l' cat $CHECK ||
            grep -qs -i 'vuduo4k' cat $CHECKHOST ||
+           grep -qs -i 'vuuno4k' cat $CHECKHOST ||
+           grep -qs -i 'zgemmah82h' cat $CHECKHOST ||
            grep -qs -i 'zgemmah9twin' cat $CHECKHOST ||         
            grep -qs -i 'h9combo' cat $CHECKHOST ||
+           grep -qs -i 'h9se' cat $CHECKHOST ||
            grep -qs -i 'h8' cat $CHECKHOST ||
            grep -qs -i 'ustym4kpro' cat $CHECKHOST ||
            grep -qs -i 'protek4kx1' cat $CHECKHOST ||        
