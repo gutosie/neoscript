@@ -11,30 +11,30 @@ uname -m > $CHECK
 
 sleep 1;
 
-#grep -qs -i 'mips' cat $CHECK ||
-#grep -qs -i 'armv7l' cat $CHECK ||
+#grep -wq -i 'mips' cat $CHECK ||
+#grep -wq -i 'armv7l' cat $CHECK ||
 
 if grep -qs -i 'sh4' cat $CHECK ; then
            echo "[ Twoje STB to: sh4 ]" $CHECKHOST
            e2lista=e2listhb
 
-elif grep -qs -i 'osnino' cat $CHECKHOST ||
-           grep -qs -i 'osninoplus' cat $CHECKHOST  ; then
+elif grep -wq -i "osnino" "/etc/hostname" ||
+           grep -wq -i 'osninoplus' "/etc/hostname"  ; then
            
            echo " Twoje STB to: MIPS" $CHECKHOST
            e2lista=e2iptvhb
              
-elif grep -qs -i 'vuduo4k' cat $CHECKHOST ||
-           grep -qs -i 'zgemmah9twin' cat $CHECKHOST ||         
-           grep -qs -i 'h9combo' cat $CHECKHOST ||
-           grep -qs -i 'h8' cat $CHECKHOST ||
-           grep -qs -i 'ustym4kpro' cat $CHECKHOST ||
-           grep -qs -i 'protek4kx1' cat $CHECKHOST ||        
-           grep -qs -i 'osmio4k' cat $CHECKHOST ||
-           grep -qs -i 'lunix4k' cat $CHECKHOST || 
-           grep -qs -i 'hitube4k' cat $CHECKHOST ||        
-           grep -qs -i 'axashistwin' cat $CHECKHOST ||
-           grep -qs -i 'bre2ze4k' cat $CHECKHOST  ; then
+elif grep -wq -i "zgemmah9twin" "/etc/hostname" ||         
+           grep -wq -i "h9combo" "/etc/hostname" ||
+           grep -wq -i "h8" "/etc/hostname" ||
+           grep -wq -i "ustym4kpro" "/etc/hostname" ||
+           grep -wq -i "protek4kx1" "/etc/hostname" ||        
+           grep -wq -i "osmio4k" "/etc/hostname" ||
+           grep -wq -i "lunix4k" "/etc/hostname" || 
+           grep -wq -i "hitube4k" "/etc/hostname" ||        
+           grep -wq -i "axashistwin" "/etc/hostname" ||
+           grep -wq -i "bre2ze4k" "/etc/hostname" ||
+           grep -wq "vuduo4k" "/etc/hostname"  ; then
            
            echo " Twoje STB to: armv7l" $CHECKHOST
            e2lista=e2iptvhb    
