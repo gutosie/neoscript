@@ -19,6 +19,10 @@ if grep -qs -i 'sh4' cat $CHECK ; then
            e2lista=e2listhb
 
 elif grep -wq -i "osnino" "/etc/hostname" ||
+           grep -wq -i "vuzero" "/etc/hostname" ||
+           grep -wq -i "mbmini" "/etc/hostname" ||
+           grep -wq -i "osmini" "/etc/hostname" ||
+           grep -wq -i "miniplus" "/etc/hostname" ||
            grep -wq -i 'osninoplus' "/etc/hostname"  ; then
            
            echo " Twoje STB to: MIPS" $CHECKHOST
