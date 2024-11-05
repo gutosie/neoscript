@@ -11,19 +11,20 @@ uname -m > $CHECK
 
 sleep 1;
 
+#grep -qs -i 'mips' cat $CHECK ||
+#grep -qs -i 'armv7l' cat $CHECK ||
+
 if grep -qs -i 'sh4' cat $CHECK ; then
            echo "[ Twoje STB to: sh4 ]" $CHECKHOST
            e2lista=e2listhb
 
-elif #grep -qs -i 'mips' cat $CHECK ||
-           grep -qs -i 'osnino' cat $CHECKHOST ||
+elif grep -qs -i 'osnino' cat $CHECKHOST ||
            grep -qs -i 'osninoplus' cat $CHECKHOST  ; then
            
            echo " Twoje STB to: MIPS" $CHECKHOST
            e2lista=e2iptvhb
              
-elif #grep -qs -i 'armv7l' cat $CHECK ||
-           grep -qs -i 'vuduo4k' cat $CHECKHOST ||
+elif grep -qs -i 'vuduo4k' cat $CHECKHOST ||
            grep -qs -i 'zgemmah9twin' cat $CHECKHOST ||         
            grep -qs -i 'h9combo' cat $CHECKHOST ||
            grep -qs -i 'h8' cat $CHECKHOST ||
