@@ -34,6 +34,7 @@ elif grep -wq -i "osnino" "/etc/hostname" ||
              
 elif grep -wq -i "zgemmah9twin" "/etc/hostname" ||         
            grep -wq -i "h9combo" "/etc/hostname" ||
+           grep -wq -i "h9se" "/etc/hostname" ||
            grep -wq -i "h8" "/etc/hostname" ||
            grep -wq -i "ustym4kpro" "/etc/hostname" ||
            grep -wq -i "protek4kx1" "/etc/hostname" ||        
