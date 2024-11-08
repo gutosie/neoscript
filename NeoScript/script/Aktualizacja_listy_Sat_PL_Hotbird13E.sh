@@ -23,24 +23,21 @@ if grep -qs -i 'sh4' cat $CHECK ; then
            e2lista=e2listhb
 
 elif grep -wq -i "osnino" "/etc/hostname" ||
-           grep -wq -i "vuzero" "/etc/hostname" ||
-           grep -wq -i "mbmini" "/etc/hostname" ||
-           grep -wq -i "osmini" "/etc/hostname" ||
-           grep -wq -i "miniplus" "/etc/hostname" ||
            grep -wq -i 'osninoplus' "/etc/hostname"  ; then
            
            echo " Twoje STB to: MIPS" $CHECKHOST
            e2lista=e2iptvhb
              
-elif grep -wq -i "zgemmah9twin" "/etc/hostname" ||         
+elif grep -wq -i "zgemmah9twin" "/etc/hostname" ||     
            grep -wq -i "h9combo" "/etc/hostname" ||
            grep -wq -i "h9se" "/etc/hostname" ||
            grep -wq -i "h8" "/etc/hostname" ||
            grep -wq -i "ustym4kpro" "/etc/hostname" ||
-           grep -wq -i "protek4kx1" "/etc/hostname" ||        
+           grep -wq -i "protek4kx1" "/etc/hostname" ||    
            grep -wq -i "osmio4k" "/etc/hostname" ||
-           grep -wq -i "lunix4k" "/etc/hostname" || 
-           grep -wq -i "hitube4k" "/etc/hostname" ||        
+           grep -wq -i "lunix4k" "/etc/hostname" ||
+           grep -wq -i "ixusszero" "/etc/hostname" ||
+           grep -wq -i "hitube4k" "/etc/hostname" ||       
            grep -wq -i "axashistwin" "/etc/hostname" ||
            grep -wq -i "bre2ze4k" "/etc/hostname" ||
            grep -wq "vuduo4k" "/etc/hostname"  ; then
