@@ -11,6 +11,10 @@ uname -m > $CHECK
 
 sleep 1;
 
+if [ ! -f /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/Aktualizacja_Listy_Sat_PL_Online.sh ] ; then
+        rm -f /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/Aktualizacja_Listy_Sat_PL_Online.sh
+fi
+
 #grep -wq -i 'mips' cat $CHECK ||
 #grep -wq -i 'armv7l' cat $CHECK ||
 
