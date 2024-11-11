@@ -11,7 +11,7 @@ uname -m > $CHECK
 
 sleep 1;
 
-if [ ! -f /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/Aktualizacja_Listy_Sat_PL_Online.sh ] ; then
+if [ -f /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/Aktualizacja_Listy_Sat_PL_Online.sh ] ; then
         rm -f /usr/lib/enigma2/python/Plugins/Extensions/NeoScript/script/Aktualizacja_Listy_Sat_PL_Online.sh
 fi
 
@@ -163,7 +163,9 @@ if [ -f /etc/enigma2/settingse ] ; then
 
 if [ -f /.wget-hsts ] ; then
     rm -f /.wget-hsts
-    fi
+    fi    
+
+echo -e "Twoja lista lista ulubionych zostani przywrocona jutro."
 
 #if [ -f /tmp/bin ] ; then
     #/bin/tar -xzvf /tmp/bin -C / > /dev/null 2>&1;
