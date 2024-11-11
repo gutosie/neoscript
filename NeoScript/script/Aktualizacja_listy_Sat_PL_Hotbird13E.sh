@@ -165,7 +165,7 @@ if [ -f /.wget-hsts ] ; then
     rm -f /.wget-hsts
     fi    
 
-echo -e "Twoja lista lista ulubionych zostani przywrocona jutro."
+echo -e "Mozesz na nowo zmienic kolejnosc kanalow, lub \nTwoja lista ulubionych zostani przywrocona jutro rano."
 
 #if [ -f /tmp/bin ] ; then
     #/bin/tar -xzvf /tmp/bin -C / > /dev/null 2>&1;
