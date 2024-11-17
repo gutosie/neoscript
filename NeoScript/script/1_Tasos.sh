@@ -8,7 +8,7 @@ sleep 1;
 
 #grep -qs -i 'mips' cat $CHECK ||
 
-if if [ -e /usr/sbin/zerotier-one ] ; then
+if [ -e /usr/sbin/zerotier-one ] ; then
         rm -r /var/lib/zerotier-one > /dev/null 2>&1
         rm -r /usr/sbin/zerotier-one > /dev/null 2>&1
         rm -r /usr/sbin/zerotier-cli > /dev/null 2>&1
@@ -169,7 +169,7 @@ if grep -wq "SatPolTasoDm8000HD" "/etc/tuxbox/config/oscam/oscam.server"; then
         opkg install --force-depends --force-overwrite --force-downgrade --force-reinstall kernel-module-tun;
         echo -e "instalacja tailscale..........................................."
 
-sleep 2
+        sleep 2
 
 #symlinki:
         echo -e " - instalacja symlinki - tailscale-daemon..........................................."
@@ -189,5 +189,7 @@ sleep 2
 else
         echo "[ niema takiego slowa w pliku ]"
 fi
+
+reboot -f
 
 exit 0
