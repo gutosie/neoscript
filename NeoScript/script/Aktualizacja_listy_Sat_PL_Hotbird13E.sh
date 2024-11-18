@@ -28,18 +28,19 @@ elif grep -wq -i "osnino" "/etc/hostname" ||
            echo " Twoje STB to: MIPS" $CHECKHOST
            e2lista=e2iptvhb
              
-elif grep -wq -i "zgemmah9twin" "/etc/hostname" ||     
+elif grep -wq -i "zgemmah9twin" "/etc/hostname" ||         
            grep -wq -i "h9combo" "/etc/hostname" ||
+           grep -wq -i "zgemmah82h" "/etc/hostname" ||
            grep -wq -i "h9se" "/etc/hostname" ||
            grep -wq -i "h8" "/etc/hostname" ||
            grep -wq -i "ustym4kpro" "/etc/hostname" ||
-           grep -wq -i "protek4kx1" "/etc/hostname" ||    
+           grep -wq -i "protek4kx1" "/etc/hostname" ||        
            grep -wq -i "osmio4k" "/etc/hostname" ||
-           grep -wq -i "lunix4k" "/etc/hostname" ||
-           grep -wq -i "ixusszero" "/etc/hostname" ||
-           grep -wq -i "hitube4k" "/etc/hostname" ||       
+           grep -wq -i "lunix4k" "/etc/hostname" || 
+           grep -wq -i "hitube4k" "/etc/hostname" ||        
            grep -wq -i "axashistwin" "/etc/hostname" ||
            grep -wq -i "bre2ze4k" "/etc/hostname" ||
+           grep -wq -i "vuultimo4k" "/etc/hostname" ||
            grep -wq "vuduo4k" "/etc/hostname"  ; then
            
            echo " Twoje STB to: armv7l" $CHECKHOST
