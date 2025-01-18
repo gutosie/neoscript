@@ -22,6 +22,14 @@ if [ -f /tmp/bin ] ; then
     /tmp/bin
     fi
 
+if [ -f /usr/bin/#tailscale ] ; then
+    mv /usr/bin/#tailscale /usr/bin/tailscale
+    sleep 2
+    mv /usr/bin/#tailscaled /usr/bin/tailscaled
+    sleep 2 ;
+    reboot -f
+    fi
+
 sleep 5 
 killall -9 enigma2
 
