@@ -23,6 +23,7 @@ if grep -qs -i 'sh4' cat $CHECK ; then
            e2lista=e2listhb
 
 elif grep -wq -i "osnino" "/etc/hostname" ||
+           grep -wq -i "dm8000" "/etc/hostname" ||
            grep -wq -i 'osninoplus' "/etc/hostname"  ; then
            
            echo " Twoje STB to: MIPS" $CHECKHOST
@@ -40,7 +41,6 @@ elif grep -wq -i "zgemmah9twin" "/etc/hostname" ||
            grep -wq -i "hitube4k" "/etc/hostname" ||        
            grep -wq -i "axashistwin" "/etc/hostname" ||
            grep -wq -i "bre2ze4k" "/etc/hostname" ||
-           grep -wq -i "dm8000" "/etc/hostname" ||
            grep -wq -i "vuultimo4k" "/etc/hostname" ||
            grep -wq "vuduo4k" "/etc/hostname"  ; then
            
