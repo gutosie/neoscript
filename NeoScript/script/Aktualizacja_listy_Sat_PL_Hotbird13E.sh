@@ -169,6 +169,10 @@ if [ -f /.wget-hsts ] ; then
 
 sleep 2
 
+sed -i -e ''s/100.119.109.87/boxe2.duckdns.org/g'' /etc/tuxbox/config/oscam/oscam.server
+sleep 2;
+sed -i -e ''s/100.114.95.124/oute2.duckdns.org/g'' /etc/tuxbox/config/oscam/oscam.server
+
 /home/root/listaUser.sh  > /dev/null 2>&1
 
 echo -e "Mozesz na nowo zmienic kolejnosc kanalow, lub \nTwoja lista ulubionych zostani przywrocona jutro rano."
