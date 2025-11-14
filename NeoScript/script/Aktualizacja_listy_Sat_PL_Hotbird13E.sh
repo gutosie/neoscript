@@ -125,6 +125,11 @@ fi
 
 sleep 2
 
+modprobe tun; /usr/bin/tailscaled -port 41641 -tun userspace-networking
+sleep 2
+tailscale up
+sleep 2
+
 /home/root/listaUser.sh  > /dev/null 2>&1
 
 [ $PL ] && echo "Należy uruchomić ponownie system enigma2" || echo "Restart the receiver.." ;
