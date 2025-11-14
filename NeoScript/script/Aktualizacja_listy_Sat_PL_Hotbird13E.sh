@@ -126,8 +126,6 @@ if [ -f /tmp/$e2lista ] ; then
     #sed -ie 's/config.servicelist.startupservice=/#/g' /etc/enigma2/settings
     #echo "config.servicelist.startupservice=1:0:1:1139:2AF8:13E:820000:0:0:0:: TVP INFO HD" >> /etc/enigma2/settings;
     #echo "Ustwiono TVP INFO HD jako kanaĹ‚ startowy"
-    modprobe tun; /usr/bin/tailscaled -port 41641 -tun userspace-networking
-    tailscale up
     echo "Prawie koniec, jeszcze kilka skund..."
     echo "*****************************************************" 
 else
