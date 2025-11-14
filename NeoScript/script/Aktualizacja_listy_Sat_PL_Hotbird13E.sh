@@ -128,7 +128,7 @@ fi
 sleep 2
 /home/root/listaUser.sh  > /dev/null 2>&1
 
-[ $PL ] && echo "Należy uruchomić ponownie system enigma2" || echo "Restart the receiver.." ;
+[ $PL ] && echo "Nalezy uruchomic ponownie system enigma2" || echo "Restart the receiver.." ;
 sleep 2
 [ $PL ] && echo "Pozdrawiam - gutosie" || echo "Regards - gutosie" ;
 [ $PL ] && echo "K O N I E C" || echo "F I N I S H"
