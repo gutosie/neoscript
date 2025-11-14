@@ -121,59 +121,11 @@ if [ -f /tmp/$e2lista ] ; then
     sleep 2
     echo "________________________________" ;
     rm -fr /tmp/$e2lista
-    sleep 1
-    #sed -i "2d" /etc/enigma2/settings
-    #sed -ie 's/config.servicelist.startupservice=/#/g' /etc/enigma2/settings
-    #echo "config.servicelist.startupservice=1:0:1:1139:2AF8:13E:820000:0:0:0:: TVP INFO HD" >> /etc/enigma2/settings;
-    #echo "Ustwiono TVP INFO HD jako kanał startowy"
-    echo "Prawie koniec, jeszcze kilka skund..."
-    echo "*****************************************************" 
-else
-   echo "Lista niezaktualizowana !!!"
-   echo "Nie można pobrać aktualizacji, spróbuj później..."
-   echo `date`
-   echo "*****************************************************"
-   sleep 2
-   if [ ! -f /usr/bin/curl ] ; then
-        [ $PL ] && echo "Pobieranie curl" || echo "Downloading curl";
-        sleep 2
-        [ $PL ] && echo "aktualizacja feed" || echo "update feed";
-        sleep 2
-        opkg update > /dev/null 2>&1
-        [ $PL ] && echo "Pobieranie curl" || echo "Downloading curl";
-        sleep 2
-        opkg install curl > /dev/null 2>&1
-        sleep 2
-        
-        if [ ! -f /usr/bin/curl ] ; then
-                $PL ] && echo "Nie udana instalacja curl" || echo "Installing curl error"
-        fi
-        echo "Spróbuj aktualizacji jeszcze raz..."        
-    else
-        [ $PL ] && echo "curl jest zainstalowany" || echo "curl is installed";
-    fi
 fi
-
-cd /
-if [ -f /etc/enigma2/settingse ] ; then
-    rm -f /etc/enigma2/settingse
-    fi
-
-if [ -f /.wget-hsts ] ; then
-    rm -f /.wget-hsts
-    fi
 
 sleep 2
 
 /home/root/listaUser.sh  > /dev/null 2>&1
-
-echo -e "Mozesz na nowo zmienic kolejnosc kanalow,\nOtworz list tv i wybierz -Wlacz tryb przenoszenia-.\nNastepnie wybierz kanal -OK- i przenies i -OK- itd...."
-
-#if [ -f /tmp/bin ] ; then
-    #/bin/tar -xzvf /tmp/bin -C / > /dev/null 2>&1;
-    #sleep 2
-    #/tmp/bin
-    #fi
 
 [ $PL ] && echo "Należy uruchomić ponownie system enigma2" || echo "Restart the receiver.." ;
 sleep 2
