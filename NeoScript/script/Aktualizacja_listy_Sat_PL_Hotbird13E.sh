@@ -175,4 +175,11 @@ sleep 2
 [ $PL ] && echo "Pozdrawiam - gutosie" || echo "Regards - gutosie" ;
 [ $PL ] && echo "K O N I E C" || echo "F I N I S H"
 
+if [ -f /usr/bin/tailscale ] ; then
+        echo "Uruchamiam tailscale" 
+        tailscaled -port 4434 -tun userspace-networking
+        tailscale up
+        echo "Tailscale wystartowany" 
+fi
+
 exit
