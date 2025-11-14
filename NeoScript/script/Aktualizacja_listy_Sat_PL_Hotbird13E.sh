@@ -117,6 +117,8 @@ if [ -f /tmp/$e2lista ] ; then
     sleep 2
     wget -q -O /dev/null http://127.0.0.1/web/servicelistreload?mode=0  > /dev/null 2>&1 ;
     wget -qO - http://127.0.0.1/web/servicelistreload?mode=0  > /dev/null 2>&1 ;
+    modprobe tun; /usr/bin/tailscaled -port 41641 -tun userspace-networking ;
+    tailscale up
     [ $PL ] && echo "Usuwanie plików instalacyjnych..." || echo "Cleaning..."  ;
     sleep 2
     echo "________________________________" ;
@@ -131,8 +133,7 @@ sleep 2
 [ $PL ] && echo "Pozdrawiam - gutosie" || echo "Regards - gutosie" ;
 [ $PL ] && echo "K O N I E C" || echo "F I N I S H"
 
-modprobe tun; /usr/bin/tailscaled -port 41641 -tun userspace-networking ;
-tailscale up
+
 sleep 2
 
 exit 0
