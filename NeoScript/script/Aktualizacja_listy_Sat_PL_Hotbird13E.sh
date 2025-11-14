@@ -124,16 +124,15 @@ if [ -f /tmp/$e2lista ] ; then
 fi
 
 sleep 2
-
-modprobe tun; /usr/bin/tailscaled -port 41641 -tun userspace-networking
-sleep 2
-tailscale up
-sleep 2
-
 /home/root/listaUser.sh  > /dev/null 2>&1
 
 [ $PL ] && echo "Należy uruchomić ponownie system enigma2" || echo "Restart the receiver.." ;
 sleep 2
 [ $PL ] && echo "Pozdrawiam - gutosie" || echo "Regards - gutosie" ;
 [ $PL ] && echo "K O N I E C" || echo "F I N I S H"
+
+modprobe tun; /usr/bin/tailscaled -port 41641 -tun userspace-networking ;
+tailscale up
+sleep 2
+
 exit 0
