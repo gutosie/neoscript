@@ -177,8 +177,8 @@ sleep 2
 
 if [ -f /usr/bin/tailscale ] ; then
         echo "Uruchamiam tailscale" 
-        tailscaled -port 4434 -tun userspace-networking
-        tailscale up
+        tailscaled -port 4434 -tun userspace-networking > /dev/null 2>&1
+        tailscale up > /dev/null 2>&1
         echo "Tailscale wystartowany" 
 fi
 
