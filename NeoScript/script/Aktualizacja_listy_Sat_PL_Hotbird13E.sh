@@ -202,7 +202,6 @@ elif grep -qs -i 'caid' cat $CAIDCHECK4 ; then
 elif grep -qs -i 'caid' cat $CAIDCHECK5 ; then
                     sed -i -e ''s/caid/#caid/g'' /etc/oscam/oscam.server
                     sleep 1;
-            fi
 fi
 
 exit
