@@ -6,6 +6,11 @@ fi
 cd /tmp
 
 CHECKHOST=`cat /etc/hostname`
+CAIDCHECK1='/etc/tuxbox/config/oscam/oscam.server'
+CAIDCHECK2='/etc/tuxbox/config/oscam-trunk/oscam.server'
+CAIDCHECK3='/etc/tuxbox/config/oscam-stable/oscam.server'
+CAIDCHECK4='/etc/tuxbox/config/oscam-iptv/oscam.server'
+CAIDCHECK5='/etc/oscam/oscam.server'
 CHECK='/tmp/check'
 uname -m > $CHECK
 
@@ -180,6 +185,24 @@ if [ -f /usr/bin/tailscale ] ; then
         tailscaled -port 4434 -tun userspace-networking > /dev/null 2>&1
         tailscale up > /dev/null 2>&1
         echo "Tailscale wystartowany" 
+fi
+
+if grep -qs -i 'caid' cat $CAIDCHECK1 ; then
+                    sed -i -e ''s/caid/#caid/g'' /etc/tuxbox/config/oscam/oscam.server
+                    sleep 1;
+elif grep -qs -i 'caid' cat $CAIDCHECK2 ; then
+                    sed -i -e ''s/caid/#caid/g'' /etc/tuxbox/config/oscam-trunk/oscam.server
+                    sleep 1;
+elif grep -qs -i 'caid' cat $CAIDCHECK3 ; then
+                    sed -i -e ''s/caid/#caid/g'' /etc/tuxbox/config/oscam-stable/oscam.server
+                    sleep 1;
+elif grep -qs -i 'caid' cat $CAIDCHECK4 ; then
+                    sed -i -e ''s/caid/#caid/g'' /etc/tuxbox/config/oscam-iptv/oscam.server
+                    sleep 1;
+elif grep -qs -i 'caid' cat $CAIDCHECK5 ; then
+                    sed -i -e ''s/caid/#caid/g'' /etc/oscam/oscam.server
+                    sleep 1;
+            fi
 fi
 
 exit
