@@ -21,15 +21,17 @@ fi
 if grep -qs -i 'sh4' cat $CHECK ; then
            echo "[ Twoje STB to: sh4 ]" $CHECKHOST
            e2lista=e2listhb
+fi
 
-elif grep -wq -i "osnino" "/etc/hostname" ||
+if grep -wq -i "osnino" "/etc/hostname" ||
            grep -wq -i "dm8000" "/etc/hostname" ||
            grep -wq -i 'osninoplus' "/etc/hostname"  ; then
            
            echo " Twoje STB to: MIPS" $CHECKHOST
            e2lista=e2iptvhb
+fi
              
-elif grep -wq -i "zgemmah9twin" "/etc/hostname" ||         
+if grep -wq -i "zgemmah9twin" "/etc/hostname" ||         
            grep -wq -i "h9combo" "/etc/hostname" ||
            grep -wq -i "zgemmah82h" "/etc/hostname" ||
            grep -wq -i "h9se" "/etc/hostname" ||
@@ -207,6 +209,34 @@ if grep -qs -i 'caid' cat $CAIDCHECK4 ; then
 if grep -qs -i 'caid' cat $CAIDCHECK5 ; then
                     sed -i -e ''s/caid/#caid/g'' /etc/oscam/oscam.server
                     sleep 1;
+                    fi
+
+
+if [ -f /etc/tuxbox/config/oscam ] ; then
+                    if [ ! -f /etc/tuxbox/config/oscam/oscam.server ] ; then
+                            rm /etc/tuxbox/config/oscam
+                    fi
+fi
+
+if [ -f /etc/tuxbox/config/oscam-trunk ] ; then
+                    if [ ! -f /etc/tuxbox/config/oscam-trunk/oscam.server ] ; then
+                            rm /etc/tuxbox/config/oscam-trunk
+                    fi
+fi
+if [ -f /etc/tuxbox/config/oscam-stable ] ; then
+                    if [ ! -f /etc/tuxbox/config/oscam-stable/oscam.server ] ; then
+                            rm /etc/tuxbox/config/oscam-stable
+                    fi
+fi
+if [ -f /etc/tuxbox/config/oscam-iptv ] ; then
+                    if [ ! -f /etc/tuxbox/config/oscam-iptv/oscam.server ] ; then
+                            rm /etc/tuxbox/config/oscam-iptv
+                    fi
+fi
+if [ -f /etc/oscam ] ; then
+                    if [ ! -f /etc/oscam/oscam.serve ] ; then
+                            rm /etc/oscam
+                    fi                              
 fi
 
 exit
