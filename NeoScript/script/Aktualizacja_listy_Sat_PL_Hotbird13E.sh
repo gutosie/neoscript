@@ -239,8 +239,8 @@ if [ -f /.wget-hsts ] ; then
     rm -f /.wget-hsts
     fi
 
-if [ -f /home/root/listaUser.sh ] ; then
-    /home/root/listaUser.sh  > /dev/null 2>&1
-fi
+#if [ -f /home/root/listaUser.sh ] ; then
+    #/home/root/listaUser.sh  > /dev/null 2>&1
+#fi
  
 exit 0
