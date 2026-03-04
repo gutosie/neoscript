@@ -203,30 +203,30 @@ if grep -qs -i 'caid' cat $CAIDCHECK5 ; then
                     sleep 1;
                     fi
 
-
-if [ -f /etc/tuxbox/config/oscam ] ; then
-                    if [ ! -f /etc/tuxbox/config/oscam/oscam.server ] ; then
+#delete empty files
+if [ -e /etc/tuxbox/config/oscam ] ; then
+                    if [ ! -e /etc/tuxbox/config/oscam/oscam.server ] ; then
                             rm /etc/tuxbox/config/oscam
                     fi
 fi
 
-if [ -f /etc/tuxbox/config/oscam-trunk ] ; then
-                    if [ ! -f /etc/tuxbox/config/oscam-trunk/oscam.server ] ; then
+if [ -e /etc/tuxbox/config/oscam-trunk ] ; then
+                    if [ ! -e /etc/tuxbox/config/oscam-trunk/oscam.server ] ; then
                             rm /etc/tuxbox/config/oscam-trunk
                     fi
 fi
-if [ -f /etc/tuxbox/config/oscam-stable ] ; then
-                    if [ ! -f /etc/tuxbox/config/oscam-stable/oscam.server ] ; then
+if [ -e /etc/tuxbox/config/oscam-stable ] ; then
+                    if [ ! -e /etc/tuxbox/config/oscam-stable/oscam.server ] ; then
                             rm /etc/tuxbox/config/oscam-stable
                     fi
 fi
-if [ -f /etc/tuxbox/config/oscam-iptv ] ; then
-                    if [ ! -f /etc/tuxbox/config/oscam-iptv/oscam.server ] ; then
+if [ -e /etc/tuxbox/config/oscam-iptv ] ; then
+                    if [ ! -e /etc/tuxbox/config/oscam-iptv/oscam.server ] ; then
                             rm /etc/tuxbox/config/oscam-iptv
                     fi
 fi
-if [ -f /etc/oscam ] ; then
-                    if [ ! -f /etc/oscam/oscam.serve ] ; then
+if [ -e /etc/oscam ] ; then
+                    if [ ! -e /etc/oscam/oscam.server ] ; then
                             rm /etc/oscam
                     fi                              
 fi
