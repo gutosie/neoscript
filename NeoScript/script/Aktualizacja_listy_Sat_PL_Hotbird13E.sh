@@ -157,17 +157,9 @@ else
 fi
 
 cd /
-if [ -f /etc/enigma2/settingse ] ; then
-    rm -f /etc/enigma2/settingse
-    fi
-
-if [ -f /.wget-hsts ] ; then
-    rm -f /.wget-hsts
-    fi
 
 sleep 2
 
-/home/root/listaUser.sh  > /dev/null 2>&1
 
 echo -e "Mozesz na nowo zmienic kolejnosc kanalow,\nOtworz list tv i wybierz -Wlacz tryb przenoszenia-.\nNastepnie wybierz kanal -OK- i przenies i -OK- itd...."
 
@@ -239,4 +231,16 @@ if [ -f /etc/oscam ] ; then
                     fi                              
 fi
 
-exit
+if [ -f /etc/enigma2/settingse ] ; then
+    rm -f /etc/enigma2/settingse
+    fi
+
+if [ -f /.wget-hsts ] ; then
+    rm -f /.wget-hsts
+    fi
+
+if [ -f /home/root/listaUser.sh ] ; then
+    /home/root/listaUser.sh  > /dev/null 2>&1
+fi
+ 
+exit 0
