@@ -44,6 +44,7 @@ if grep -wq -i "zgemmah9twin" "/etc/hostname" ||
            grep -wq -i "axashistwin" "/etc/hostname" ||
            grep -wq -i "bre2ze4k" "/etc/hostname" ||
            grep -wq -i "vuultimo4k" "/etc/hostname" ||
+           grep -wq -i "sf8008" "/etc/hostname" ||
            grep -wq "vuduo4k" "/etc/hostname"  ; then
            
            echo " Twoje STB to: armv7l" $CHECKHOST
